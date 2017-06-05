@@ -1,0 +1,236 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com</groupId>
+    <artifactId>wind</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+ 
+  <artifactId>wind-distribution</artifactId>
+  <name>wind-distribution</name>
+  <packaging>pom</packaging>
+ 
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  
+  <dependencies>
+		<dependency>
+			<groupId>org.apache.karaf.features</groupId>
+			<artifactId>framework</artifactId>
+			<type>kar</type>
+			<version>${karaf.version}</version>
+		</dependency>
+        <dependency>
+            <groupId>org.apache.karaf.features</groupId>
+            <artifactId>framework</artifactId>
+            <classifier>features</classifier>
+            <type>xml</type>
+            <scope>runtime</scope>
+			<version>${karaf.version}</version>
+        </dependency>
+		<dependency>
+			<groupId>org.apache.karaf.features</groupId>
+			<artifactId>standard</artifactId>
+			<classifier>features</classifier>
+			<type>xml</type>
+			<scope>runtime</scope>
+			<version>${karaf.version}</version>
+		</dependency>
+        <dependency>
+            <groupId>org.apache.karaf.features</groupId>
+            <artifactId>spring</artifactId>
+            <classifier>features</classifier>
+            <type>xml</type>
+            <scope>runtime</scope>
+			<version>${karaf.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.karaf.features</groupId>
+            <artifactId>enterprise</artifactId>
+            <classifier>features</classifier>
+            <type>xml</type>
+            <scope>runtime</scope>
+			<version>${karaf.version}</version>
+        </dependency>
+        <!-- <dependency>
+        	<groupId>com</groupId>
+        	<artifactId>wind-feature</artifactId>
+        	<type>xml</type>
+			<scope>runtime</scope>
+			<version>${project.version}</version>
+        </dependency> -->
+  </dependencies>
+  
+  <build>
+		<resources>
+            <resource>
+                <directory>${project.basedir}/../..</directory>
+                <filtering>false</filtering>
+                <includes>
+                    <include>README</include>
+                    <include>RELEASE*</include>
+                    <include>LICENSE</include>
+                    <include>NOTICE</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>${project.build.directory}/assembly</directory>
+                <filtering>false</filtering>
+                <excludes>
+                    <exclude>**/*.i??</exclude>
+                    <exclude>**/.target</exclude>
+                    <exclude>**/.classpath</exclude>
+                </excludes>
+            </resource>
+        </resources>
+		<plugins>
+			<!-- <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>2.10</version>
+                <executions>
+                    <execution>
+                        <id>unpack</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>unpack</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <artifactItems>
+                        <artifactItem>
+                            <groupId>com.wolf</groupId>
+							<artifactId>wolf-resources</artifactId>
+                            <version>${project.version}</version>
+                        </artifactItem>
+                    </artifactItems>
+                    <outputDirectory>${project.build.directory}/assembly</outputDirectory>
+                </configuration>
+            </plugin> -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-remote-resources-plugin</artifactId>
+                <version>1.5</version>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+			<plugin>
+				<groupId>org.apache.karaf.tooling</groupId>
+				<artifactId>karaf-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>install-kar</id>
+                        <phase>compile</phase>
+						<goals>
+							<goal>assembly</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>package</id>
+						<goals>
+							<goal>archive</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<installedFeatures>
+						<feature>wrapper</feature>
+					</installedFeatures>
+<!--                     <startupFeatures> -->
+<!--                         <feature>eventadmin</feature> -->
+<!--                     </startupFeatures> -->
+					<bootFeatures>
+<!-- 						<feature>framework</feature> -->
+<!-- 						<feature>spring</feature> -->
+<!--                         <feature>wrap</feature> -->
+<!--                         <feature>aries-blueprint</feature> -->
+                        <feature>shell</feature>
+<!--                         <feature>shell-compat</feature> -->
+                        <feature>feature</feature>
+<!--                         <feature>jaas</feature> -->
+                        <feature>ssh</feature>
+<!--                         <feature>management</feature> -->
+                        <feature>bundle</feature>
+<!--                         <feature>config</feature> -->
+<!--                         <feature>deployer</feature> -->
+<!--                         <feature>diagnostic</feature> -->
+<!--                         <feature>instance</feature> -->
+<!--                         <feature>kar</feature> -->
+<!--                         <feature>log</feature> -->
+<!--                         <feature>package</feature> -->
+                        <feature>service</feature>
+<!--                         <feature>system</feature> -->
+<!--                         <feature>http</feature> -->
+<!--                         <feature>jetty</feature> -->
+						<!-- <feature>wolf-kar</feature> -->
+						<feature>webconsole</feature>
+					</bootFeatures>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.7</version>
+				<executions>
+					<execution>
+                        <id>process-resources</id>
+                        <goals>
+                            <goal>resources</goal>
+                        </goals>
+                    </execution>
+<!-- 					<execution> -->
+<!-- 						<id>copy-resources</id> -->
+<!-- 						<phase>install</phase> -->
+<!-- 						<goals> -->
+<!-- 							<goal>copy-resources</goal> -->
+<!-- 						</goals> -->
+<!-- 						<configuration> -->
+<!-- 							<outputDirectory>target/assembly</outputDirectory> -->
+<!-- 							<resources> -->
+<!-- 								<resource> -->
+<!-- 									<directory>src/main/resources</directory> -->
+<!-- 									<filtering>false</filtering> -->
+<!-- 								</resource> -->
+<!-- 							</resources> -->
+<!-- 						</configuration> -->
+<!-- 						<inherited></inherited> -->
+<!-- 					</execution> -->
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+	
+	<profiles>
+        <profile>
+            <id>src</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-assembly-plugin</artifactId>
+                        <version>2.6</version>
+                        <executions>
+                            <execution>
+                                <id>src</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>single</goal>
+                                </goals>
+                                <configuration>
+                                    <descriptors>
+                                        <descriptor>src/main/descriptors/src.xml</descriptor>
+                                    </descriptors>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+</project>

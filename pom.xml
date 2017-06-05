@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com</groupId>
+  <artifactId>wind</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+
+  <name>wind</name>
+  <url>http://maven.apache.org</url>
+
+
+  <properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<karaf.version>4.0.5</karaf.version>
+		<camel.version>2.15.2</camel.version>
+		<xerces.version>2.11.0</xerces.version>
+        <servicemix.specs.version>2.7.0</servicemix.specs.version>
+        <xalan.bundle.version>2.7.2_3</xalan.bundle.version>
+        <xalan-serializer.bundle.version>2.7.2_1</xalan-serializer.bundle.version>
+  </properties>
+
+
+  <modules>
+  	<module>wind-feature</module>
+  	<module>wind-bundle</module>
+    <module>wind-distribution</module>
+  </modules>
+  
+  <build>
+	<pluginManagement>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.karaf.tooling</groupId>
+				<artifactId>karaf-maven-plugin</artifactId>
+				<version>${karaf.version}</version>
+				<extensions>true</extensions>
+			</plugin>
+		</plugins>
+	</pluginManagement>
+  </build>
+</project>
