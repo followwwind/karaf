@@ -23,9 +23,9 @@
 
 
   <modules>
-  	<module>wind-feature</module>
   	<module>wind-bundle</module>
     <module>wind-distribution</module>
+    <module>wind-features</module>
   </modules>
   
   <build>

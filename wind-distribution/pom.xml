@@ -14,6 +14,7 @@
  
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <appendedResourcesDirectory>${basedir}/../etc/appended-resources</appendedResourcesDirectory>
   </properties>
   
   <dependencies>
@@ -55,13 +56,19 @@
             <scope>runtime</scope>
 			<version>${karaf.version}</version>
         </dependency>
-        <!-- <dependency>
+        <dependency>
         	<groupId>com</groupId>
-        	<artifactId>wind-feature</artifactId>
+        	<artifactId>wind-features</artifactId>
+        	<classifier>features</classifier>
         	<type>xml</type>
 			<scope>runtime</scope>
 			<version>${project.version}</version>
-        </dependency> -->
+        </dependency>
+        <dependency>
+            <groupId>com</groupId>
+			<artifactId>resources-bundle</artifactId>
+            <version>${project.version}</version>
+		</dependency>
   </dependencies>
   
   <build>
@@ -87,7 +94,7 @@
             </resource>
         </resources>
 		<plugins>
-			<!-- <plugin>
+			<plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
                 <version>2.10</version>
@@ -103,14 +110,14 @@
                 <configuration>
                     <artifactItems>
                         <artifactItem>
-                            <groupId>com.wolf</groupId>
-							<artifactId>wolf-resources</artifactId>
+                            <groupId>com</groupId>
+							<artifactId>resources-bundle</artifactId>
                             <version>${project.version}</version>
                         </artifactItem>
                     </artifactItems>
                     <outputDirectory>${project.build.directory}/assembly</outputDirectory>
                 </configuration>
-            </plugin> -->
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-remote-resources-plugin</artifactId>
