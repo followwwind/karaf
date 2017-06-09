@@ -3,13 +3,12 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <groupId>com</groupId>
+    <groupId>com.wind</groupId>
     <artifactId>wind</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
   
   <artifactId>wind-features</artifactId>
-  <name>wind-features</name>
   <packaging>pom</packaging>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

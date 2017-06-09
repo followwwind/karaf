@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <metadata modelVersion="1.1.0">
-  <groupId>com</groupId>
+  <groupId>com.wind</groupId>
   <artifactId>wind-features</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <versioning>

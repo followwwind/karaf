@@ -57,7 +57,7 @@
 			<version>${karaf.version}</version>
         </dependency>
         <dependency>
-        	<groupId>com</groupId>
+        	<groupId>com.wind</groupId>
         	<artifactId>wind-features</artifactId>
         	<classifier>features</classifier>
         	<type>xml</type>
@@ -65,7 +65,7 @@
 			<version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>com</groupId>
+            <groupId>com.wind</groupId>
 			<artifactId>resources-bundle</artifactId>
             <version>${project.version}</version>
 		</dependency>
@@ -174,7 +174,7 @@
 <!--                         <feature>system</feature> -->
 <!--                         <feature>http</feature> -->
 <!--                         <feature>jetty</feature> -->
-						<!-- <feature>wolf-kar</feature> -->
+						<feature>wind-kar</feature>
 						<feature>webconsole</feature>
 					</bootFeatures>
 				</configuration>
