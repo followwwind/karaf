@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.wind</groupId>
-  <artifactId>wind</artifactId>
+  <artifactId>karaf</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
 
@@ -23,9 +23,9 @@
 
 
   <modules>
-  	<module>wind-bundle</module>
-    <module>wind-distribution</module>
-    <module>wind-features</module>
+  	<module>karaf-bundle</module>
+    <module>karaf-distribution</module>
+    <module>karaf-features</module>
   </modules>
   
   <build>
@@ -37,6 +37,14 @@
 				<version>${karaf.version}</version>
 				<extensions>true</extensions>
 			</plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
 		</plugins>
 	</pluginManagement>
   </build>
